@@ -1,0 +1,39 @@
+/* =====================================================================
+   TẦNG 1 – PRIMITIVES (giá trị thô của thương hiệu)
+   Chỉ là bảng màu / font / kích thước gốc. KHÔNG dùng trực tiếp
+   trong component – component chỉ đọc token ở semantic.css.
+   ===================================================================== */
+:root {
+  /* Màu chuẩn từ bộ element của hãng */
+  --ngonq-yellow-500: #FFE04B;
+  --ngonq-skin-200:   #FEE4CF;
+  --ngonq-brown-900:  #382D22;
+
+  /* Màu phụ */
+  --ngonq-cream-50:   #FFF6EA;
+  --ngonq-brown-600:  #6B5444;
+  --ngonq-white:      #FFFFFF;
+  --ngonq-red-600:    #E3261C;
+
+  /* Màu 4 vị */
+  --ngonq-orange-500: #F59A1B; /* cheese */
+  --ngonq-gold-400:   #FFC928; /* butter */
+  --ngonq-green-500:  #8CC63F; /* wasabi */
+  --ngonq-green-900:  #2F5E12;
+  --ngonq-green-700:  #3E9A2E;
+  --ngonq-gold-700:   #E8A200;
+  --ngonq-orange-800: #D9530F;
+
+  /* Font */
+  --ngonq-font-marvin: "Marvin Round", "Baloo 2", sans-serif;
+  --ngonq-font-baloo:  "Baloo 2", system-ui, sans-serif;
+  --ngonq-font-sofia:  "Sofia Soft", "Baloo 2", sans-serif;
+
+  /* Thang khoảng cách (4px) */
+  --size-1: 4px;  --size-2: 8px;   --size-3: 12px; --size-4: 16px;
+  --size-5: 20px; --size-6: 24px;  --size-7: 28px; --size-8: 32px;
+  --size-10: 40px; --size-14: 56px;
+
+  /* Bo góc */
+  --radius-sm: 5px; --radius-md: 18px; --radius-lg: 28px; --radius-full: 999px;
+}

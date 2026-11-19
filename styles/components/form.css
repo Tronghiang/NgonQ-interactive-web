@@ -1,0 +1,11 @@
+/* Ô nhập PIN + dòng báo lỗi */
+.pin-input {
+  width: 220px; text-align: center; font-size: 34px; letter-spacing: 12px;
+  font-family: inherit; font-weight: 800;
+  border: var(--border-width) solid var(--color-border); border-radius: var(--radius-md);
+  padding: 8px; background: var(--color-surface); color: var(--color-text);
+  /* ô text thường (không phải type=password) để trình duyệt không hiện
+     nút gợi ý mật khẩu / chìa khoá – vẫn che số bằng dấu chấm */
+  -webkit-text-security: disc; text-security: disc;
+}
+.field-error { color: var(--color-danger); font-weight: 700; min-height: 1.5em; margin: 6px 0; }

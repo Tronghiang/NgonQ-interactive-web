@@ -1,0 +1,3 @@
+/* Cài đặt nhân viên (nằm trong .sheet) */
+.settings-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.settings-note { font-size: 14px; margin-top: 16px; }

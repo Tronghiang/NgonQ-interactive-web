@@ -1,0 +1,26 @@
+/* Chuyển trang "Siêu nhân kéo vải" – scripts/transitions/hero-wipe.js
+   Lớp phủ toàn màn hình, nằm trên các màn nhưng dưới hộp cài đặt (.sheet). */
+.hero-wipe {
+  position: fixed; inset: 0; z-index: 5;
+  pointer-events: auto;          /* chặn bấm lung tung khi đang bay */
+  overflow: hidden;
+  contain: strict;
+}
+.hero-wipe__cloth {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  overflow: visible;
+}
+.hero-wipe__fill  { fill: var(--hero-cloth); }
+.hero-wipe__edge  {
+  fill: none; stroke: var(--color-border); stroke-width: var(--border-width);
+  stroke-linejoin: round;
+}
+.hero-wipe__fold  { fill: none; stroke: var(--hero-cloth-shade); stroke-linecap: round; opacity: .55; }
+.hero-wipe__shine { fill: none; stroke: var(--hero-cloth-light); stroke-linecap: round; opacity: .5; }
+
+.hero-wipe__hero {
+  position: absolute; left: 0; top: 0;
+  transform-origin: 50% 50%;
+  will-change: transform, opacity;
+  filter: drop-shadow(0 6px 0 rgb(56 45 34 / .3));
+}

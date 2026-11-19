@@ -1,0 +1,9 @@
+/* Dải pattern tràn viền trên đầu màn hình */
+.topbar {
+  margin: 0 calc(var(--space-gutter) * -1);
+  padding: calc(14px + env(safe-area-inset-top)) var(--space-gutter) 14px;
+  background: var(--texture-header) center / cover;
+  border-bottom: var(--border-width) solid var(--color-border);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.topbar__logo { height: clamp(48px, 8vh, 80px); filter: drop-shadow(0 4px 0 var(--color-border)); }

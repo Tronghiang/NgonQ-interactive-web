@@ -1,0 +1,35 @@
+/* =====================================================================
+   NGONQ – điểm vào duy nhất của CSS
+   Thứ tự layer = thứ tự ưu tiên (layer sau thắng layer trước),
+   nên không cần !important hay selector dài để "đè" style.
+   ===================================================================== */
+@layer tokens, base, components, screens, utilities;
+
+/* 1. Design tokens – đổi design system chủ yếu ở đây */
+@import url("tokens/primitives.css") layer(tokens);
+@import url("tokens/semantic.css")   layer(tokens);
+
+/* 2. Nền tảng */
+@import url("base/fonts.css")      layer(base);
+@import url("base/reset.css")      layer(base);
+@import url("base/typography.css") layer(base);
+
+/* 3. Component – mỗi file 1 component, chỉ dùng token semantic */
+@import url("components/button.css")      layer(components);
+@import url("components/topbar.css")      layer(components);
+@import url("components/pill.css")        layer(components);
+@import url("components/flavor-card.css") layer(components);
+@import url("components/bar-chart.css")   layer(components);
+@import url("components/sheet.css")       layer(components);
+@import url("components/form.css")        layer(components);
+@import url("components/tally.css")       layer(components);
+@import url("components/hero-wipe.css")   layer(components);
+
+/* 4. Màn hình – chỉ lo bố cục, sắp xếp component */
+@import url("screens/screen.css")   layer(screens);
+@import url("screens/choose.css")   layer(screens);
+@import url("screens/results.css")  layer(screens);
+@import url("screens/settings.css") layer(screens);
+
+/* 5. Tiện ích nhỏ */
+@import url("utilities.css") layer(utilities);

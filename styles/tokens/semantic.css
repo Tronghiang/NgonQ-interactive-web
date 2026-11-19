@@ -1,0 +1,78 @@
+/* =====================================================================
+   TẦNG 2 – SEMANTIC TOKENS (= theme mặc định "ngonq")
+   Đặt tên theo VAI TRÒ, không theo màu: --color-accent chứ không phải --yellow.
+   Đổi design system / tạo theme mới = viết lại khối này dưới
+   [data-theme="ten-moi"] (xem styles/themes/_template.css).
+   ===================================================================== */
+:root,
+[data-theme="ngonq"] {
+  /* ---- Màu nền & chữ ---- */
+  --color-bg:            var(--ngonq-cream-50);
+  --color-surface:       var(--ngonq-white);
+  --color-text:          var(--ngonq-brown-900);
+  --color-text-muted:    var(--ngonq-brown-600);
+  --color-text-inverse:  var(--ngonq-yellow-500);
+  --color-border:        var(--ngonq-brown-900);
+  --color-divider:       rgb(56 45 34 / .25);
+  --color-overlay:       rgb(56 45 34 / .55);
+
+  /* ---- Màu hành động ---- */
+  --color-accent:        var(--ngonq-yellow-500);
+  --color-accent-soft:   var(--ngonq-skin-200);
+  --color-danger:        var(--ngonq-red-600);
+  --color-on-danger:     var(--ngonq-white);
+
+  /* ---- Màu từng vị: bg = màu thẻ/cột, ink = chữ nằm trên màu đó ---- */
+  --flavor-cheese-bg: var(--ngonq-orange-500); --flavor-cheese-ink: var(--ngonq-yellow-500);
+  --flavor-butter-bg: var(--ngonq-gold-400);   --flavor-butter-ink: var(--ngonq-orange-800);
+  --flavor-wasabi-bg: var(--ngonq-green-500);  --flavor-wasabi-ink: var(--ngonq-green-900);
+  --flavor-bbq-bg:    var(--ngonq-red-600);    --flavor-bbq-ink:    var(--ngonq-yellow-500);
+  /* màu tên vị trên thẻ trắng (đậm hơn cho đủ tương phản) */
+  --flavor-cheese-label: var(--ngonq-orange-500);
+  --flavor-butter-label: var(--ngonq-gold-700);
+  --flavor-wasabi-label: var(--ngonq-green-700);
+  --flavor-bbq-label:    var(--ngonq-red-600);
+
+  /* ---- Chữ ---- */
+  --font-display: var(--ngonq-font-marvin);
+  --font-body:    var(--ngonq-font-baloo);
+  --font-label:   var(--ngonq-font-sofia);
+  --text-display: clamp(34px, 6vw, 72px);
+  --text-display-sm: clamp(26px, 3.6vw, 46px);
+  --text-lead:    clamp(17px, 2.2vw, 24px);
+  --text-lead-sm: clamp(15px, 1.7vw, 19px);
+
+  /* ---- Hình khối (phong cách "sticker": viền nâu dày + bóng đặc) ---- */
+  --border-width: 4px;
+  --border-width-thin: 3px;
+  --radius-card: var(--radius-lg);
+  --radius-card-flat: 14px;   /* thẻ vị kiểu thẻ bài phẳng */
+  --radius-pill: var(--radius-full);
+  --shadow-pop:  0 7px 0 var(--color-border);
+  --shadow-pop-sm: 0 5px 0 var(--color-border);
+  --shadow-pressed: 0 3px 0 var(--color-border);
+  --press-offset: 4px;
+
+  /* ---- Bố cục ---- */
+  --space-gutter: clamp(16px, 3vw, 40px);
+  --space-stack:  clamp(10px, 2vh, 24px);
+
+  /* ---- Chuyển trang "siêu nhân kéo vải" (cùng màu áo choàng) ---- */
+  --hero-cloth:       #DA3A33;
+  --hero-cloth-shade: #B02A24;
+  --hero-cloth-light: #F47A6E;
+
+  /* ---- Texture ---- */
+  --texture-header: url(../../assets/images/brand/pattern.png);
+
+  /* ---- Chuyển động (giai đoạn 2 sẽ dùng) ---- */
+  --duration-fast: 120ms;
+  --duration-base: 240ms;
+  --ease-pop: cubic-bezier(.34, 1.56, .64, 1);
+  --ease-out: cubic-bezier(.22, 1, .36, 1);
+  --duration-focus: 380ms;    /* thẻ được chọn phóng to (kiểu Netflix/PS5) */
+  --scale-focus: 1.14;
+  --scale-dim: .94;
+  --duration-bar: 1000ms;      /* cột chạy lên */
+  --stagger-bar: 120ms;        /* cột sau chạy trễ hơn cột trước */
+}

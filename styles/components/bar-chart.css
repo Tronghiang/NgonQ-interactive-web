@@ -1,0 +1,94 @@
+/* Biểu đồ cột – scripts/components/bar-chart.js
+   Khối phẳng không viền, đầu bo tròn, cột đứng sát nhau, % nằm trong cột.
+   Biến nhận từ ngoài mỗi cột: --c (màu cột), --ink (màu chữ), --r (tỉ lệ 0..1) */
+.bar-chart {
+  /* Cột thấp nhất vẫn có thân cao bằng --bar-floor phần khoảng trống
+     (0 = tỉ lệ thật tuyệt đối; tăng lên thì các cột nhìn cao hơn, chênh lệch dịu hơn) */
+  --bar-floor: .38;
+  width: min(560px, 76vw); height: 100%; max-height: 640px; align-self: center;
+  display: flex; flex-direction: column;
+}
+.bar-chart__bars {
+  flex: 1; min-height: 0;
+  container-type: size;
+  display: grid; grid-template-columns: repeat(4, 1fr); align-items: end;
+  border-bottom: var(--border-width-thin) solid var(--color-border);
+  overflow: clip; /* cột trồi lên từ dưới đường đáy */
+}
+.bar-chart__bar {
+  /* đầu tròn = nửa bề rộng cột; phần còn lại co giãn theo số lượt */
+  --cap: calc(12.5cqw + 5.5cqw + 26px);
+  --room: calc(100cqh - var(--cap) - 27cqw); /* 27cqw = chỗ cho vương miện + nhãn Your pick */
+  position: relative;
+  height: calc(var(--cap) + var(--room) * (var(--bar-floor) + (1 - var(--bar-floor)) * var(--r)));
+  background: var(--c); color: var(--ink);
+  border-radius: var(--radius-full) var(--radius-full) 0 0;
+  display: flex; flex-direction: column; align-items: center;
+  padding-top: 4.5cqw;
+}
+.bar-chart__pct {
+  font-family: var(--font-body); font-weight: 500;
+  font-size: 7.5cqw; line-height: 1; letter-spacing: -.02em;
+}
+.bar-chart__pct small { font-size: .45em; font-weight: 600; margin-left: 1px; }
+.bar-chart__votes { font-weight: 700; font-size: max(12px, 2.4cqw); opacity: .85; margin-top: 2px; }
+.bar-chart__crown {
+  position: absolute; bottom: calc(100% - 4px); left: 50%; translate: -50% 0;
+  width: 15cqw;
+}
+
+.bar-chart__labels { display: grid; grid-template-columns: repeat(4, 1fr); padding-top: 12px; }
+.bar-chart__label {
+  display: flex; flex-direction: column; align-items: center; gap: 4px; text-align: center;
+  opacity: .6;
+}
+.bar-chart__label.is-mine { opacity: 1; }
+.bar-chart__title { width: 92%; max-height: clamp(56px, 11vh, 96px); object-fit: contain; }
+
+/* Nhãn "Your pick" + mũi tên chỉ xuống cột khách chọn (nằm trên vương miện nếu cột dẫn đầu) */
+.bar-chart__you {
+  --gap: 6px;
+  position: absolute; left: 50%; translate: -50% 0; z-index: 2;
+  bottom: calc(100% + var(--gap) + 1.6cqw);
+  background: var(--color-border); color: var(--color-accent);
+  font-family: var(--font-label); font-weight: 700; text-transform: uppercase; white-space: nowrap;
+  font-size: max(12px, 2.3cqw); letter-spacing: .04em; line-height: 1;
+  padding: 1.3cqw 2.6cqw; border-radius: var(--radius-pill);
+}
+.bar-chart__you i {
+  position: absolute; left: 50%; top: 100%; translate: -50% -1px;
+  border: 1.7cqw solid transparent; border-top-color: var(--color-border); border-bottom: 0;
+}
+.bar-chart__bar.is-lead .bar-chart__you { --gap: 14.5cqw; }
+
+/* ---------- Animation: cột chạy lên, vương miện bật ra sau cùng ---------- */
+.bar-chart__bar {
+  animation: bar-rise var(--duration-bar) var(--ease-out) both;
+  animation-delay: calc(var(--chart-delay, 0ms) + var(--i, 0) * var(--stagger-bar));
+}
+.bar-chart__pct, .bar-chart__votes {
+  animation: bar-fade 400ms ease-out both;
+  animation-delay: calc(var(--chart-delay, 0ms) + var(--i, 0) * var(--stagger-bar) + var(--duration-bar) * .55);
+}
+.bar-chart__crown {
+  transform-origin: 50% 100%;
+  animation: crown-pop 500ms var(--ease-pop) both;
+  animation-delay: calc(var(--chart-delay, 0ms) + 4 * var(--stagger-bar) + var(--duration-bar) * .8);
+}
+.bar-chart__label {
+  animation: bar-fade 400ms ease-out both;
+  animation-delay: calc(var(--chart-delay, 0ms) + var(--duration-bar) * .3);
+}
+.bar-chart__you {
+  animation: you-in 500ms var(--ease-pop) both, you-bob 1.6s ease-in-out infinite;
+  animation-delay: calc(4 * var(--stagger-bar) + var(--duration-bar) * .9), calc(4 * var(--stagger-bar) + var(--duration-bar) * .9 + 500ms);
+}
+@keyframes you-in  { from { opacity: 0; transform: translateY(-12px) scale(.6); } }
+@keyframes you-bob { 50% { transform: translateY(5px); } }
+@keyframes bar-rise  { from { transform: translateY(100%); } to { transform: none; } }
+@keyframes bar-fade  { from { opacity: 0; transform: translateY(8px); } }
+@keyframes crown-pop { from { opacity: 0; scale: .3; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .bar-chart__bar, .bar-chart__pct, .bar-chart__votes, .bar-chart__crown, .bar-chart__label, .bar-chart__you { animation: none; }
+}

@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en" data-theme="ngonq">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#382D22">
+<title>NGONQ Macaball</title>
+<link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+
+<!-- ============ MÀN 1: CHỌN VỊ  (scripts/screens/choose.js) ============ -->
+<main id="choose" class="screen" data-active>
+  <button class="icon-btn icon-btn--sm screen__corner" data-open-settings aria-label="Settings">
+      <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+    </button>
+
+  <div class="screen__headline">
+    <img class="choose__logo" src="assets/images/brand/logo-macaball.png" alt="NGONQ Macaball">
+    <h1 class="title">Which flavor would you take home?</h1>
+  </div>
+
+  <div class="flavor-grid" id="flavorGrid"><!-- FlavorCard × 4 --></div>
+
+  <footer class="screen__actions">
+    <button class="btn btn--primary" id="confirmBtn" disabled>This one!</button>
+  </footer>
+</main>
+
+<!-- ============ MÀN 2: KẾT QUẢ  (scripts/screens/results.js) ============ -->
+<main id="results" class="screen">
+  <img class="screen__logo" src="assets/images/brand/logo.png" alt="NGONQ">
+  <div class="screen__headline">
+    <h1 class="title title--sm" id="resultTitle">Thank you!</h1>
+    <p class="lead lead--sm" id="resultSub"></p>
+  </div>
+
+  <div class="chart-area" id="chart"><!-- BarChart --></div>
+
+  <footer class="screen__actions">
+    <button class="link-btn" id="backBtn">← Back to start</button>
+  </footer>
+</main>
+
+<!-- ============ CÀI ĐẶT NHÂN VIÊN  (scripts/screens/settings.js) ============ -->
+<div class="sheet" id="settings" hidden>
+  <div class="sheet__card">
+    <button class="icon-btn icon-btn--surface icon-btn--sm sheet__close" data-close-settings aria-label="Close">✕</button>
+
+    <section id="pinStep">
+      <h2 class="heading">Settings</h2>
+      <p class="muted">Enter staff PIN</p>
+      <input id="pinInput" class="pin-input" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="6" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" name="staff-code" data-1p-ignore data-lpignore="true" aria-label="Staff PIN">
+      <p class="field-error" id="pinErr"></p>
+      <button class="btn btn--primary btn--sm" id="pinBtn">Open</button>
+    </section>
+
+    <section id="adminStep" hidden>
+      <h2 class="heading">Current round</h2>
+      <table class="tally" id="tally"></table>
+      <div class="settings-actions">
+        <button class="btn btn--ghost btn--sm" id="exportBtn">Export CSV</button>
+        <button class="btn btn--danger btn--sm" id="resetBtn">Start new round</button>
+      </div>
+      <p class="muted settings-note" id="modeNote"></p>
+    </section>
+
+    <section id="confirmStep" hidden>
+      <h2 class="heading">Reset to 0?</h2>
+      <p class="muted">The chart will start over from zero. A backup of the current votes stays on this device.</p>
+      <div class="settings-actions">
+        <button class="btn btn--ghost btn--sm" id="cancelReset">Cancel</button>
+        <button class="btn btn--danger btn--sm" id="doReset">Reset</button>
+      </div>
+    </section>
+  </div>
+</div>
+
+<script type="module" src="scripts/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+/* Bảng đếm lượt trong cài đặt – scripts/components/tally-table.js */
+.tally { width: 100%; border-collapse: collapse; margin: 10px 0 20px; font-size: 20px; text-align: left; }
+.tally td { padding: 8px 4px; border-bottom: 2px dashed var(--color-divider); }
+.tally td:last-child { text-align: right; font-weight: 800; }
+.tally__swatch {
+  display: inline-block; width: 16px; height: 16px; margin-right: 10px; vertical-align: -2px;
+  border-radius: var(--radius-sm); border: 2px solid var(--color-border); background: var(--c);
+}
+.tally__sum td { border: 0; font-weight: 800; }

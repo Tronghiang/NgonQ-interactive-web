@@ -1,0 +1,46 @@
+/* Màn 1 – chọn vị
+   Mọi thứ gọn lại, đặt giữa, chừa khoảng thở xung quanh */
+#choose { gap: clamp(8px, 2vh, 24px); padding-bottom: calc(clamp(10px, 2.5vh, 28px) + env(safe-area-inset-bottom)); }
+#choose .screen__headline { margin-top: 0; display: flex; flex-direction: column; align-items: center; }
+.choose__logo { display: block; height: clamp(40px, 7vh, 80px); width: auto; margin-bottom: clamp(8px, 2.5vh, 32px); }
+#choose .title {
+  font-size: clamp(28px, 4vw, 52px);
+  -webkit-text-stroke-width: clamp(5px, .7vw, 9px);
+  text-shadow: 0 4px 0 var(--color-border);
+}
+#choose .lead { font-size: clamp(15px, 1.6vw, 19px); margin-top: 8px; }
+
+.flavor-grid {
+  /* thẻ giữ tỉ lệ bao bì (5:7); bề rộng lưới bị giới hạn theo chiều cao màn để không tràn */
+  width: min(1354px, 96vw, 150vh);
+  margin-top: clamp(24px, 5.5vh, 64px) !important; /* chừa chỗ cho thẻ đang chọn phóng to */
+  align-self: center; margin-block: auto;
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(16px, 2.4vw, 32px);
+}
+.flavor-grid .flavor-card { aspect-ratio: 5 / 8; }
+
+#choose .screen__actions { margin-bottom: 0; }
+/* to hơn bản gốc 25% (18→22.5px, 24→30px, 56→70px, 10/40→12.5/50px) */
+#choose .btn { font-size: clamp(22.5px, 2.5vw, 30px); min-height: 70px; padding: 12.5px 50px; --btn-shadow: 0 6px 0 var(--color-border); }
+
+@media (orientation: portrait) {
+  .flavor-grid {
+    grid-template-columns: repeat(2, 1fr);
+    width: min(864px, 96vw, 43vh);
+  }
+}
+
+/* Nút "This one!" chỉ hiện khi đã chọn 1 thẻ.
+   Dùng visibility (không dùng display) để vẫn giữ chỗ → lưới thẻ không bị nhảy. */
+#confirmBtn {
+  transition: opacity var(--duration-base) ease, scale var(--duration-base) var(--ease-pop), visibility 0s;
+}
+#confirmBtn:disabled {
+  opacity: 0; scale: .85; visibility: hidden;
+  transition: opacity var(--duration-fast) ease, scale var(--duration-fast) ease, visibility 0s var(--duration-fast);
+}
+@media (prefers-reduced-motion: reduce) { #confirmBtn { transition: none; } }
+
+@media (orientation: portrait) {
+  #choose .screen__headline { margin-top: 0; }
+}

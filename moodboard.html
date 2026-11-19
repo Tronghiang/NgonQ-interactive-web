@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NGONQ Moodboard</title>
+<style>
+  @font-face { font-family: "Marvin Round"; src: url(assets/fonts/marvin-round.otf); }
+  @font-face { font-family: "Baloo 2"; src: url(assets/fonts/baloo2.ttf); font-weight: 400 800; }
+  @font-face { font-family: "Sofia Soft"; src: url(assets/fonts/sofiapro-soft-bold.ttf); }
+
+  :root {
+    --cream: #FFF4E2;
+    --cream-2: #FFE7C2;
+    --brown: #3E2A1E;
+    --brown-2: #6B4430;
+    --skin: #FFE0C2;
+    --cheese: #F59A1B;
+    --butter: #FFC928;
+    --wasabi: #8CC63F;
+    --bbq: #E3261C;
+    --yellow: #FFD93B;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--cream); color: var(--brown);
+    font-family: "Baloo 2", system-ui, sans-serif; font-size: 18px; line-height: 1.5;
+  }
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 32px 16px 80px; }
+  header { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin-bottom: 8px; }
+  header img { height: 90px; }
+  .tag { font-weight: 700; background: var(--brown); color: var(--cream); border-radius: 999px; padding: 4px 14px; font-size: 14px; }
+  h1, h2 { font-family: "Marvin Round", "Baloo 2", sans-serif; font-weight: normal; letter-spacing: .5px; }
+  h1 { font-size: 40px; margin: 0; }
+  h2 { font-size: 30px; margin: 56px 0 6px; }
+  h2 small { font-family: "Baloo 2"; font-size: 16px; font-weight: 600; color: var(--brown-2); margin-left: 8px; }
+  p.lead { margin: 0 0 20px; color: var(--brown-2); }
+  .card { background: #fff; border: 3px solid var(--brown); border-radius: 24px; padding: 20px; box-shadow: 0 6px 0 var(--brown); }
+  .grid { display: grid; gap: 20px; }
+  .g4 { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+  .g2 { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
+
+  /* Palette */
+  .sw { border: 3px solid var(--brown); border-radius: 20px; overflow: hidden; background: #fff; box-shadow: 0 5px 0 var(--brown); }
+  .sw div { height: 90px; }
+  .sw p { margin: 0; padding: 10px 14px; font-weight: 700; font-size: 15px; line-height: 1.3; }
+  .sw p span { display: block; font-weight: 500; color: var(--brown-2); }
+
+  /* Type */
+  .title-fx {
+    font-family: "Marvin Round", sans-serif; font-size: 64px; line-height: 1.05; color: var(--yellow);
+    -webkit-text-stroke: 10px var(--brown); paint-order: stroke fill;
+    text-shadow: 0 6px 0 var(--brown-2);
+  }
+  .title-fx.white { color: #fff; font-size: 46px; }
+  .vi-sample { font-family: "Baloo 2"; font-weight: 800; font-size: 34px; }
+  .note { font-size: 14px; background: var(--cream-2); border-radius: 12px; padding: 8px 12px; margin-top: 12px; }
+
+  /* Element map */
+  .el { text-align: center; }
+  .el .img { height: 150px; display: flex; align-items: center; justify-content: center; background: var(--cream); border-radius: 16px; margin-bottom: 10px; }
+  .el img { max-height: 135px; max-width: 90%; }
+  .el b { display: block; }
+  .el span { font-size: 14px; color: var(--brown-2); }
+
+  /* Option previews */
+  .opt h3 { font-family: "Marvin Round"; font-weight: normal; font-size: 22px; margin: 0 0 4px; }
+  .opt .badge { display: inline-block; font-size: 13px; font-weight: 700; padding: 2px 10px; border-radius: 999px; background: var(--yellow); border: 2px solid var(--brown); margin-bottom: 10px; }
+  .screen { aspect-ratio: 16/10; border: 3px solid var(--brown); border-radius: 18px; overflow: hidden; position: relative; background: var(--cream); padding: 4% 4% 3%; display: flex; flex-direction: column; }
+  .screen .top { display: flex; align-items: center; justify-content: center; gap: 10px; }
+  .screen .top img { height: 34px; }
+  .screen .q { text-align: center; font-family: "Marvin Round"; font-size: clamp(14px, 2vw, 20px); margin: 2% 0 3%; }
+  .row4 { flex: 1; display: grid; grid-template-columns: repeat(4, 1fr); gap: 3%; align-items: end; }
+  .row4 > div { display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; }
+  .row4 img { max-width: 100%; max-height: 100%; object-fit: contain; min-height: 0; }
+  .pill { margin-top: 6%; font-family: "Marvin Round"; color: #fff; font-size: clamp(9px, 1.1vw, 12px); padding: 3px 10px; border-radius: 999px; border: 2px solid var(--brown); white-space: nowrap; }
+  .tiles .row4 > div { border: 3px solid var(--brown); border-radius: 16px; padding: 6%; justify-content: center; }
+
+  /* Chart previews */
+  .bars { flex: 1; display: flex; align-items: flex-end; gap: 4%; padding: 0 6%; border-bottom: 3px solid var(--brown); }
+  .bars > div { flex: 1; border: 3px solid var(--brown); border-bottom: 0; border-radius: 14px 14px 0 0; position: relative; display: flex; justify-content: center; }
+  .bars > div b { position: absolute; top: -26px; font-family: "Marvin Round"; font-weight: normal; font-size: 15px; }
+  .bars > div img { position: absolute; bottom: 6px; width: 70%; }
+  .labels { display: flex; gap: 4%; padding: 6px 6% 0; }
+  .labels span { flex: 1; text-align: center; font-weight: 800; font-size: clamp(9px, 1vw, 12px); }
+  .donut-wrap { flex: 1; display: flex; align-items: center; justify-content: center; gap: 6%; min-height: 0; }
+  .donut { height: 82%; aspect-ratio: 1; border-radius: 50%; border: 3px solid var(--brown);
+    background: conic-gradient(var(--cheese) 0 34%, var(--butter) 0 52%, var(--wasabi) 0 68%, var(--bbq) 0 100%); position: relative; }
+  .donut::after { content: ""; position: absolute; inset: 24%; background: var(--cream); border-radius: 50%; border: 3px solid var(--brown); }
+  .donut img { position: absolute; inset: 30%; width: 40%; z-index: 1; }
+  .legend { font-weight: 800; font-size: clamp(10px, 1.2vw, 14px); line-height: 2; }
+  .legend i { display: inline-block; width: 14px; height: 14px; border-radius: 4px; border: 2px solid var(--brown); margin-right: 6px; vertical-align: -2px; }
+
+  /* Motion */
+  .bounce { animation: bounce 1.6s ease-in-out infinite; }
+  .wiggle { animation: wiggle 1.2s ease-in-out infinite; transform-origin: 50% 90%; }
+  .pop:hover, .pop:active { transform: scale(1.08) rotate(-3deg); }
+  .pop { transition: transform .2s cubic-bezier(.3,1.6,.5,1); cursor: pointer; }
+  @keyframes bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-14px); } }
+  @keyframes wiggle { 0%,100% { transform: rotate(-6deg); } 50% { transform: rotate(6deg); } }
+  @media (prefers-reduced-motion: reduce) { .bounce, .wiggle { animation: none; } }
+
+  ol.todo { padding-left: 22px; }
+  ol.todo li { margin-bottom: 8px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <img src="assets/images/brand/logo.png" alt="NGONQ">
+    <div>
+      <h1>Moodboard website chọn vị</h1>
+      <span class="tag">Bước 3 · chờ m duyệt</span>
+    </div>
+  </header>
+  <p class="lead">Mọi thứ dưới đây lấy từ bao bì và element có sẵn. M xem rồi chọn phương án A/B cho từng mục ở cuối trang.</p>
+
+  <!-- 1. Palette -->
+  <h2>1. Bảng màu <small>lấy từ bao bì (mã màu là ước lượng, m sửa nếu có mã chuẩn)</small></h2>
+  <div class="grid g4">
+    <div class="sw"><div style="background:var(--cream)"></div><p>Kem – nền chính<span>#FFF4E2</span></p></div>
+    <div class="sw"><div style="background:var(--brown)"></div><p>Nâu – viền, chữ<span>#3E2A1E</span></p></div>
+    <div class="sw"><div style="background:var(--yellow)"></div><p>Vàng logo – điểm nhấn<span>#FFD93B</span></p></div>
+    <div class="sw"><div style="background:var(--skin)"></div><p>Da mascot – nền phụ<span>#FFE0C2</span></p></div>
+    <div class="sw"><div style="background:var(--cheese)"></div><p>Prinkle Cheese<span>#F59A1B</span></p></div>
+    <div class="sw"><div style="background:var(--butter)"></div><p>Butta La Toasta<span>#FFC928</span></p></div>
+    <div class="sw"><div style="background:var(--wasabi)"></div><p>Ayo Wassapi<span>#8CC63F</span></p></div>
+    <div class="sw"><div style="background:var(--bbq)"></div><p>BBQ On Fire<span>#E3261C</span></p></div>
+  </div>
+
+  <!-- 2. Type -->
+  <h2>2. Chữ <small>font trong thư mục Fonts của m</small></h2>
+  <div class="grid g2">
+    <div class="card">
+      <div class="title-fx">NGONQ!</div>
+      <div class="title-fx white" style="margin-top:8px">PICK YOUR FLAVOR</div>
+      <p class="note"><b>Tiêu đề: Marvin Round</b>, viền nâu dày và bóng đổ giống logo. Font này <b>không có dấu tiếng Việt</b>, nên chỉ dùng cho chữ tiếng Anh hoặc chữ không dấu.</p>
+    </div>
+    <div class="card">
+      <div class="vi-sample">Bạn thích vị nào nhất?</div>
+      <div style="font-weight:600;font-size:22px">Chạm vào gói hạt để chọn nha!</div>
+      <div style="font-weight:400">Cảm ơn bạn đã chọn – cùng xem mọi người thích gì nè.</div>
+      <p class="note"><b>Tiếng Việt: Baloo 2</b> (đậm và tròn, có đủ dấu). Dùng cho câu hỏi, lời cảm ơn và nhãn biểu đồ.</p>
+    </div>
+  </div>
+
+  <!-- 3. Elements -->
+  <h2>3. Element sẽ dùng <small>đã copy vào public/assets</small></h2>
+  <div class="grid g4">
+    <div class="card el"><div class="img"><img src="assets/images/products/bag-cheese.png" alt=""></div><b>Túi 3D (mockup)</b><span>Trang 1 – phương án A</span></div>
+    <div class="card el"><div class="img"><img src="assets/images/products/pack-wasabi.png" alt=""></div><b>Bao bì phẳng</b><span>Trang 1 – phương án B</span></div>
+    <div class="card el"><div class="img"><img src="assets/images/titles/title-bbq.png" alt=""></div><b>Logo tên từng vị</b><span>Hiện to khi khách vừa chọn</span></div>
+    <div class="card el"><div class="img"><img class="bounce" src="assets/images/mascots/mascot-crown.png" alt=""></div><b>Mascot vương miện</b><span>Trang 2 – đội vương miện cho vị dẫn đầu</span></div>
+    <div class="card el"><div class="img"><img class="wiggle" src="assets/images/mascots/mascot-basic.png" alt=""></div><b>Mascot cơ bản</b><span>Trang 1 – vẫy chào, gọi khách</span></div>
+    <div class="card el"><div class="img"><img src="assets/images/mascots/mascot-detective.png" alt=""></div><b>Mascot thám tử</b><span>Trang 2 – "điều tra" kết quả</span></div>
+    <div class="card el"><div class="img"><img src="assets/images/brand/logo-ngonqua.png" alt=""></div><b>NGONQ(ÚA)!</b><span>Lời cảm ơn sau khi chọn</span></div>
+    <div class="card el"><div class="img"><img src="assets/images/shapes/shape-pill.png" alt=""></div><b>Khung nâu vẽ tay</b><span>Nền cho nút và nhãn</span></div>
+  </div>
+  <p class="note">Chưa dùng: mascot phi hành gia, mascot sừng đỏ và quả địa cầu. M muốn đưa vào chỗ nào thì nói t.</p>
+
+  <!-- 4. Page 1 options -->
+  <h2>4. Trang 1 – chọn vị <small>chạm vào gói để thử hiệu ứng</small></h2>
+  <div class="grid g2">
+    <div class="card opt">
+      <span class="badge">A</span><h3>Túi 3D đứng thành hàng</h3>
+      <div class="screen">
+        <div class="top"><img src="assets/images/brand/logo.png" alt=""></div>
+        <div class="q">PICK YOUR FAVORITE!</div>
+        <div class="row4">
+          <div class="pop"><img src="assets/images/products/bag-cheese.png" alt=""><span class="pill" style="background:var(--cheese)">CHEESE</span></div>
+          <div class="pop"><img src="assets/images/products/bag-butter.png" alt=""><span class="pill" style="background:var(--butter);color:var(--brown)">BUTTER</span></div>
+          <div class="pop"><img src="assets/images/products/bag-wasabi.png" alt=""><span class="pill" style="background:var(--wasabi)">WASABI</span></div>
+          <div class="pop"><img src="assets/images/products/bag-bbq.png" alt=""><span class="pill" style="background:var(--bbq)">BBQ</span></div>
+        </div>
+      </div>
+      <p class="note">Giống đứng trước kệ hàng thật. Hợp màn hình ngang (laptop, TV).</p>
+    </div>
+    <div class="card opt tiles">
+      <span class="badge">B</span><h3>Thẻ màu theo vị</h3>
+      <div class="screen">
+        <div class="top"><img src="assets/images/brand/logo.png" alt=""></div>
+        <div class="q">PICK YOUR FAVORITE!</div>
+        <div class="row4">
+          <div class="pop" style="background:var(--cheese)"><img src="assets/images/products/pack-cheese.png" alt=""></div>
+          <div class="pop" style="background:var(--butter)"><img src="assets/images/products/pack-butter.png" alt=""></div>
+          <div class="pop" style="background:var(--wasabi)"><img src="assets/images/products/pack-wasabi.png" alt=""></div>
+          <div class="pop" style="background:var(--bbq)"><img src="assets/images/products/pack-bbq.png" alt=""></div>
+        </div>
+      </div>
+      <p class="note">Mỗi vị là một ô màu lớn, dễ bấm hơn. Hợp iPad và màn hình cảm ứng.</p>
+    </div>
+  </div>
+
+  <!-- 5. Page 2 options -->
+  <h2>5. Trang 2 – biểu đồ <small>số liệu minh họa</small></h2>
+  <div class="grid g2">
+    <div class="card opt">
+      <span class="badge">A</span><h3>Cột (đua nhau lên cao)</h3>
+      <div class="screen">
+        <div class="q">MỌI NGƯỜI ĐANG CHỌN...</div>
+        <div class="bars">
+          <div style="height:85%;background:var(--cheese)"><b>34%</b><img src="assets/images/mascots/mascot-crown.png" alt=""></div>
+          <div style="height:45%;background:var(--butter)"><b>18%</b></div>
+          <div style="height:40%;background:var(--wasabi)"><b>16%</b></div>
+          <div style="height:80%;background:var(--bbq)"><b>32%</b></div>
+        </div>
+        <div class="labels"><span>Cheese</span><span>Butter</span><span>Wasabi</span><span>BBQ</span></div>
+      </div>
+      <p class="note">Dễ thấy vị nào dẫn đầu, có mascot đội vương miện trên cột cao nhất. Cột mọc lên khi trang hiện ra.</p>
+    </div>
+    <div class="card opt">
+      <span class="badge">B</span><h3>Bánh donut</h3>
+      <div class="screen">
+        <div class="q">MỌI NGƯỜI ĐANG CHỌN...</div>
+        <div class="donut-wrap">
+          <div class="donut"><img src="assets/images/mascots/mascot-detective.png" alt=""></div>
+          <div class="legend">
+            <div><i style="background:var(--cheese)"></i>Cheese 34%</div>
+            <div><i style="background:var(--butter)"></i>Butter 18%</div>
+            <div><i style="background:var(--wasabi)"></i>Wasabi 16%</div>
+            <div><i style="background:var(--bbq)"></i>BBQ 32%</div>
+          </div>
+        </div>
+      </div>
+      <p class="note">Gọn và nhìn vui, nhưng khi 2 vị gần bằng nhau thì khó so hơn biểu đồ cột.</p>
+    </div>
+  </div>
+
+  <!-- 6. Motion -->
+  <h2>6. Chuyển động</h2>
+  <div class="card">
+    <ol class="todo">
+      <li>Trang 1: mascot vẫy nhẹ, 4 gói hạt nhún nhảy lần lượt để gọi khách bấm.</li>
+      <li>Khi bấm: gói phóng to và xoay nhẹ, logo tên vị bật lên giữa màn hình kèm chữ <b>NGONQ(ÚA)!</b></li>
+      <li>Trang 2: cột mọc lên từ 0 và con số chạy lên đến % thật.</li>
+      <li>Sau khoảng 8 giây (hoặc khi bấm "Chọn lại") tự quay về trang 1 cho người kế tiếp.</li>
+    </ol>
+  </div>
+
+  <h2>7. M cần chốt</h2>
+  <div class="card">
+    <ol class="todo">
+      <li>Trang 1: <b>A</b> (túi 3D) hay <b>B</b> (thẻ màu)?</li>
+      <li>Trang 2: <b>A</b> (cột) hay <b>B</b> (donut)?</li>
+      <li>Câu chữ trên web: tiếng Việt, tiếng Anh hay cả hai?</li>
+      <li>Có sửa mã màu nào hay thêm element nào không?</li>
+    </ol>
+  </div>
+</div>
+</body>
+</html>

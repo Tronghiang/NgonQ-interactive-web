@@ -1,0 +1,5 @@
+/* Tiện ích một-việc. Dùng ít, không thay thế component. */
+.u-visually-hidden {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip-path: inset(50%); white-space: nowrap;
+}

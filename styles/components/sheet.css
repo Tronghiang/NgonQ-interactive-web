@@ -1,0 +1,13 @@
+/* Hộp thoại nổi (modal) */
+.sheet {
+  position: fixed; inset: 0; z-index: 10;
+  background: var(--color-overlay);
+  display: grid; place-items: center; padding: 16px;
+}
+.sheet__card {
+  position: relative; width: min(460px, 100%);
+  background: var(--color-bg); border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-card); box-shadow: var(--shadow-pop);
+  padding: var(--size-7); text-align: center;
+}
+.sheet__close { position: absolute; top: 12px; right: 12px; }

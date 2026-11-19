@@ -1,0 +1,16 @@
+/* =====================================================================
+   MẪU THEME MỚI – chép file này thành vd. themes/tet-2027.css
+   1) Đổi tên [data-theme="..."]
+   2) Chỉ ghi đè token semantic cần đổi (token nào không ghi sẽ giữ như cũ)
+   3) Thêm vào styles/main.css:  @import url("themes/tet-2027.css") layer(tokens);
+   4) Bật trong index.html:      <html lang="vi" data-theme="tet-2027">
+      (hoặc đổi THEME trong scripts/config/app.config.js)
+   File này KHÔNG được import nên không ảnh hưởng gì.
+   ===================================================================== */
+[data-theme="ten-theme"] {
+  --color-bg:     #FFF1F1;
+  --color-accent: #E3261C;
+  --color-border: #5A0E0E;
+  --radius-card:  12px;
+  --shadow-pop:   0 6px 0 var(--color-border);
+}

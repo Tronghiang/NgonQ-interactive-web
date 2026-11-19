@@ -1,0 +1,7 @@
+/* Nhãn bo tròn đậm: "120 lượt chọn", "Bạn chọn" */
+.pill {
+  display: inline-block;
+  background: var(--color-text); color: var(--color-text-inverse); font-weight: 800;
+  border-radius: var(--radius-pill); padding: 8px 20px; font-size: clamp(16px, 2vw, 22px);
+}
+.pill--xs { font-size: 12px; letter-spacing: .04em; text-transform: uppercase; padding: 1px 10px; }

@@ -1,0 +1,85 @@
+/* Thẻ chọn vị – scripts/components/flavor-card.js
+   Biến nhận từ ngoài: --c (màu nền vị) */
+.flavor-card {
+  /* thẻ trắng bo góc, không viền, không bóng (ref: thẻ nhân vật) */
+  --card-pad: 7%;
+  position: relative; min-height: 0;
+  display: flex; flex-direction: column; align-items: stretch; gap: 0;
+  padding: var(--card-pad);
+  background: var(--color-surface); border-radius: var(--radius-card-flat);
+  border: var(--card-stroke, 4px) solid var(--flavor-label, var(--c)); /* viền theo màu vị */
+  box-shadow: none;
+  container-type: inline-size;
+}
+.flavor-card__label {
+  display: flex; flex-direction: column; align-items: flex-start; text-align: left;
+  padding-bottom: 5cqw; line-height: 1;
+}
+.flavor-card__brand {
+  font-family: var(--font-label); font-weight: 700; text-transform: uppercase;
+  font-size: 5.2cqw; letter-spacing: .02em; color: var(--color-text);
+}
+.flavor-card__name {
+  font-family: var(--font-label); font-weight: 700; text-transform: uppercase;
+  font-size: 8cqw; letter-spacing: .01em; margin-top: 1.2cqw; white-space: nowrap;
+  color: var(--flavor-label, var(--c));
+}
+.flavor-card__media {
+  flex: 1; min-height: 0; width: 100%; object-fit: contain;
+  pointer-events: none;
+  filter: drop-shadow(0 6px 0 rgb(56 45 34 / .35));
+}
+.flavor-card__check {
+  position: absolute; z-index: 3; top: -14px; right: -12px; width: 42px; height: 42px; border-radius: 50%;
+  background: var(--color-accent); border: 3px solid var(--color-border);
+  display: none; place-items: center; font-size: 22px; font-weight: 800;
+}
+
+/* Bao bì lấp kín thẻ: phóng to để giấu viền bao bì, thẻ giữ nguyên kích thước.
+   --crop-*: phần viền bao bì bị cắt, tính theo tỉ lệ khung bao bì (1418:2009) */
+.flavor-card__art {
+  --crop-l: .05; --crop-r: .045; --crop-t: .045; --crop-b: .08; /* .08 = bỏ luôn dòng Net weight ở đáy */
+  --ar: 1.41678; /* cao / rộng của bao bì */
+  flex: 1; min-height: 0; width: 100%;
+  container-type: size;
+  position: relative; overflow: hidden;
+  border-radius: 3px;
+  pointer-events: none;
+}
+.flavor-card__art-box {
+  --iw: calc(1 - var(--crop-l) - var(--crop-r));
+  --ih: calc((1 - var(--crop-t) - var(--crop-b)) * var(--ar));
+  --bw: max(100cqw / var(--iw), 100cqh / var(--ih));
+  position: absolute;
+  width: var(--bw); aspect-ratio: 1418 / 2009;
+  left: calc(50% - var(--bw) * (var(--crop-l) + var(--iw) / 2));
+  top:  calc(50% - var(--bw) * var(--ar) * (var(--crop-t) + (1 - var(--crop-t) - var(--crop-b)) / 2));
+}
+.flavor-card__art-bg { display: block; width: 100%; height: 100%; object-fit: fill; }
+.flavor-card__art-anim { position: absolute; height: auto; }
+
+/* Trạng thái – kiểu Netflix/PS5: thẻ được chọn phóng to & nổi lên, thẻ khác lùi lại */
+.flavor-card {
+  transition:
+    transform var(--duration-focus) var(--ease-out),
+    opacity var(--duration-focus) ease,
+    filter var(--duration-focus) ease,
+    box-shadow var(--duration-focus) ease;
+}
+.flavor-card:active { translate: 0 2px; }
+.flavor-card[aria-pressed="true"] {
+  z-index: 2;
+  transform: scale(var(--scale-focus)) translateY(-3%);
+  outline: 4px solid var(--flavor-label, var(--color-border)); outline-offset: 4px;
+}
+.flavor-card[aria-pressed="true"] .flavor-card__check { display: grid; animation: check-pop 360ms var(--ease-pop) both; }
+.has-pick .flavor-card[aria-pressed="false"] {
+  transform: scale(var(--scale-dim));
+  opacity: .5; filter: saturate(.7);
+}
+@keyframes check-pop { from { scale: 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .flavor-card { transition: none; }
+  .flavor-card__check { animation: none !important; }
+}

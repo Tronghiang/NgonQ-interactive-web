@@ -1,0 +1,47 @@
+/* Màn 2 – kết quả
+   Ngang: 2 cột – chữ bên trái, biểu đồ bên phải (dùng hết bề ngang, vẫn thoáng)
+   Dọc:   xếp chồng – chữ, biểu đồ, nút */
+#results { gap: clamp(8px, 1.5vh, 16px); }
+#results .screen__headline { margin-top: clamp(12px, 4vh, 40px); }
+
+.chart-area {
+  flex: 1; min-height: 0;
+  display: flex; justify-content: center; align-items: stretch;
+  padding: clamp(16px, 4vh, 48px) 0 clamp(4px, 1vh, 12px);
+}
+
+@media (orientation: landscape) {
+  #results[data-active] {
+    display: grid;
+    grid-template-columns: minmax(0, 3.2fr) minmax(0, 6.8fr);
+    grid-template-rows: 1fr auto auto 1fr;
+    grid-template-areas:
+      ".    chart"
+      "head chart"
+      "act  chart"
+      ".    chart";
+    column-gap: clamp(24px, 4vw, 72px);
+    row-gap: clamp(16px, 4vh, 40px);
+    --results-inset: clamp(24px, 5vw, 88px); /* lề trái chung cho logo + khối chữ */
+    padding-inline: var(--results-inset);
+  }
+  #results .screen__logo { left: var(--results-inset); }
+  #results .screen__headline { grid-area: head; margin: 0; text-align: left; }
+  #results .screen__actions { grid-area: act; justify-content: flex-start; }
+  #results .chart-area { grid-area: chart; padding: clamp(20px, 5vh, 56px) 0 clamp(16px, 4vh, 40px); }
+
+  #results .title { font-size: clamp(32px, 4.4vw, 68px); }
+  #results .title .hl { display: block; text-wrap: balance; }
+  #results .lead { margin-top: clamp(8px, 2vh, 20px); font-size: clamp(16px, 1.8vw, 22px); }
+  #results .link-btn { padding-left: 0; }
+
+  .bar-chart { width: 100%; max-width: 1000px; max-height: none; }
+}
+
+@media (orientation: portrait) {
+  #results .screen__headline { margin-top: clamp(56px, 9vh, 112px); } /* chừa chỗ cho logo góc */
+  #results .title { font-size: clamp(30px, 6vw, 56px); }
+  #results .lead { font-size: clamp(16px, 2.4vw, 22px); }
+  #results .chart-area { padding-top: clamp(40px, 8vh, 96px); }
+  .bar-chart { width: min(720px, 88vw); max-height: 860px; }
+}

@@ -1,0 +1,13 @@
+/* Reset + thiết lập cho kiosk cảm ứng (không zoom, không bôi chọn, không kéo ảnh) */
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+html, body { height: 100%; }
+body {
+  margin: 0; overflow: hidden;
+  background: var(--color-bg); color: var(--color-text);
+  font-family: var(--font-body);
+  user-select: none; -webkit-user-select: none; touch-action: manipulation;
+  overscroll-behavior: none;
+}
+img { -webkit-user-drag: none; pointer-events: none; }
+button { font: inherit; color: inherit; cursor: pointer; }
+[hidden] { display: none !important; }
