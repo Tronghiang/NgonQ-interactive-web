@@ -2,9 +2,14 @@
 .title {
   margin: 0; font-family: var(--font-display); font-weight: normal;
   font-size: var(--text-display); line-height: 1.1; color: var(--color-accent);
-  -webkit-text-stroke: clamp(7px, 1vw, 12px) var(--color-border); paint-order: stroke fill;
-  text-shadow: 0 6px 0 var(--color-border);
+  -webkit-text-stroke: clamp(7px, calc(1 * var(--vw)), 12px) var(--color-border); paint-order: stroke fill;
+  /* bóng dùng drop-shadow (không dùng text-shadow): Chrome vẽ text-shadow nằm dưới viền nên bị che mất */
+  --title-shadow: 6px;
+  filter: drop-shadow(0 var(--title-shadow) 0 var(--color-border));
 }
+/* tiêu đề có dòng dẫn nhỏ: chỉ phần tên vị có bóng, dòng dẫn thì không */
+.title:has(.title__eyebrow) { filter: none; }
+.title:has(.title__eyebrow) .hl { display: inline-block; filter: drop-shadow(0 var(--title-shadow) 0 var(--color-border)); }
 .title .hl { color: var(--c); }
 /* dòng dẫn nhỏ phía trên tiêu đề chính – nhường sự chú ý cho phần .hl */
 .title__eyebrow {
@@ -12,12 +17,14 @@
   padding-left: .18em; /* thụt nhẹ cho thẳng hàng với phần ruột chữ (không tính viền) của tên vị */
   font-size: .42em; line-height: 1.2; letter-spacing: .03em;
   color: var(--color-text);
-  -webkit-text-stroke: 0; text-shadow: none;
+  -webkit-text-stroke: 0;
 }
+/* câu cổ vũ nhỏ phía trên "You're team" – nhỏ hơn và tách ra một khoảng */
+.title__cheer { display: block; font-size: .7em; margin-bottom: .7em; letter-spacing: .04em; color: var(--color-text-muted); }
 .title--sm {
   font-size: var(--text-display-sm);
-  -webkit-text-stroke-width: clamp(5px, .7vw, 8px);
-  text-shadow: 0 4px 0 var(--color-border);
+  -webkit-text-stroke-width: clamp(5px, calc(.7 * var(--vw)), 8px);
+  --title-shadow: 4px;
 }
 
 .lead { margin: 6px 0 0; font-size: var(--text-lead); font-weight: 600; color: var(--color-text-muted); }

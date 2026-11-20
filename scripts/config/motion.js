@@ -8,11 +8,11 @@ export const HERO_WIPE = {
   direction: 'right',
 
   /** Bay vào từ ngoài màn hình tới chỗ lơ lửng */
-  enterMs: 440,
+  enterMs: 330,
   /** Lấy đà rồi vút qua, kéo tấm vải phủ kín trang */
-  dashMs: 640,
+  dashMs: 480,
   /** Đuôi tấm vải lướt qua, lộ trang kết quả */
-  revealMs: 650,
+  revealMs: 500,
 
   /** Kích thước siêu nhân so với cạnh ngắn màn hình */
   heroSize: 0.27,
@@ -24,8 +24,8 @@ export const HERO_WIPE = {
   /** Độ phấp phới của mép vải (tỉ lệ chiều dài quãng bay) */
   flutter: 0.022,
   /** Tốc độ sóng vải (rad/giây) */
-  waveSpeed: 9,
+  waveSpeed: 11,
 
   /** Biểu đồ bắt đầu chạy sau khi vải mở được bao lâu */
-  chartDelayMs: 300,
+  chartDelayMs: 220,
 };

@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
+<div id="stage">
 
 <!-- ============ MÀN 1: CHỌN VỊ  (scripts/screens/choose.js) ============ -->
 <main id="choose" class="screen" data-active>
@@ -34,13 +35,14 @@
   <img class="screen__logo" src="assets/images/brand/logo.png" alt="NGONQ">
   <div class="screen__headline">
     <h1 class="title title--sm" id="resultTitle">Thank you!</h1>
-    <p class="lead lead--sm" id="resultSub"></p>
+    <p class="lead lead--sm" id="resultTagline"></p>
+    <p class="result-count" id="resultSub"></p>
   </div>
 
   <div class="chart-area" id="chart"><!-- BarChart --></div>
 
   <footer class="screen__actions">
-    <button class="link-btn" id="backBtn">← Back to start</button>
+    <button class="link-btn" id="backBtn">← Meet the flavors again</button>
   </footer>
 </main>
 
@@ -77,6 +79,8 @@
     </section>
   </div>
 </div>
+
+</div><!-- /#stage -->
 
 <script type="module" src="scripts/main.js"></script>
 </body>

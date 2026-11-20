@@ -6,4 +6,4 @@
   border-bottom: var(--border-width) solid var(--color-border);
   display: flex; align-items: center; justify-content: space-between;
 }
-.topbar__logo { height: clamp(48px, 8vh, 80px); filter: drop-shadow(0 4px 0 var(--color-border)); }
+.topbar__logo { height: clamp(48px, calc(8 * var(--vh)), 80px); filter: drop-shadow(0 4px 0 var(--color-border)); }

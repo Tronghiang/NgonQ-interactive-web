@@ -5,7 +5,9 @@
   /* Cột thấp nhất vẫn có thân cao bằng --bar-floor phần khoảng trống
      (0 = tỉ lệ thật tuyệt đối; tăng lên thì các cột nhìn cao hơn, chênh lệch dịu hơn) */
   --bar-floor: .38;
-  width: min(560px, 76vw); height: 100%; max-height: 640px; align-self: center;
+  /* Ảnh vua trên cột dẫn đầu: rộng, cao (ảnh 400×404), độ lún xuống cột */
+  --crown-w: 17cqw; --crown-h: calc(var(--crown-w) * 1.01); --crown-sink: 4px;
+  width: min(560px, calc(76 * var(--vw))); height: 100%; max-height: 640px; align-self: center;
   display: flex; flex-direction: column;
 }
 .bar-chart__bars {
@@ -22,7 +24,10 @@
   position: relative;
   height: calc(var(--cap) + var(--room) * (var(--bar-floor) + (1 - var(--bar-floor)) * var(--r)));
   background: var(--c); color: var(--ink);
-  border-radius: var(--radius-full) var(--radius-full) 0 0;
+  border-radius: 3cqw 3cqw 0 0; /* góc bo nhẹ (đầu tròn cũ: var(--radius-full) var(--radius-full) 0 0) */
+  /* viền nâu đậm giống nét viền của chữ tiêu đề; cột sau đè lên viền cột trước để không bị dày gấp đôi */
+  --bar-stroke: max(2px, .55cqw);
+  border: var(--bar-stroke) solid var(--color-border); border-bottom: 0;
   display: flex; flex-direction: column; align-items: center;
   padding-top: 4.5cqw;
 }
@@ -33,8 +38,8 @@
 .bar-chart__pct small { font-size: .45em; font-weight: 600; margin-left: 1px; }
 .bar-chart__votes { font-weight: 700; font-size: max(12px, 2.4cqw); opacity: .85; margin-top: 2px; }
 .bar-chart__crown {
-  position: absolute; bottom: calc(100% - 4px); left: 50%; translate: -50% 0;
-  width: 15cqw;
+  position: absolute; bottom: calc(100% - var(--crown-sink)); left: 50%; translate: -50% 0;
+  width: var(--crown-w); /* ảnh vua vẫy tay có khoảng trống cho cánh tay nên to hơn bản đứng im một chút */
 }
 
 .bar-chart__labels { display: grid; grid-template-columns: repeat(4, 1fr); padding-top: 12px; }
@@ -43,13 +48,17 @@
   opacity: .6;
 }
 .bar-chart__label.is-mine { opacity: 1; }
-.bar-chart__title { width: 92%; max-height: clamp(56px, 11vh, 96px); object-fit: contain; }
+.bar-chart__title { width: 92%; max-height: clamp(56px, calc(11 * var(--vh)), 96px); object-fit: contain; }
 
 /* Nhãn "Your pick" + mũi tên chỉ xuống cột khách chọn (nằm trên vương miện nếu cột dẫn đầu) */
 .bar-chart__you {
-  --gap: 6px;
+  /* --lift = khoảng hở từ mép trên khung trong của cột tới mũi nhọn.
+     Đáy nhãn = mũi nhọn (--you-arrow) + biên độ nhún (--you-bob) + --lift,
+     nên lúc nhún xuống thấp nhất mũi nhọn vẫn không chạm viền cột/vương miện. */
+  --you-arrow: 1.7cqw; --you-bob: 5px;
+  --lift: calc(var(--bar-stroke) + 1.4cqw);
   position: absolute; left: 50%; translate: -50% 0; z-index: 2;
-  bottom: calc(100% + var(--gap) + 1.6cqw);
+  bottom: calc(100% + var(--you-arrow) + var(--you-bob) + var(--lift));
   background: var(--color-border); color: var(--color-accent);
   font-family: var(--font-label); font-weight: 700; text-transform: uppercase; white-space: nowrap;
   font-size: max(12px, 2.3cqw); letter-spacing: .04em; line-height: 1;
@@ -57,9 +66,9 @@
 }
 .bar-chart__you i {
   position: absolute; left: 50%; top: 100%; translate: -50% -1px;
-  border: 1.7cqw solid transparent; border-top-color: var(--color-border); border-bottom: 0;
+  border: var(--you-arrow) solid transparent; border-top-color: var(--color-border); border-bottom: 0;
 }
-.bar-chart__bar.is-lead .bar-chart__you { --gap: 14.5cqw; }
+.bar-chart__bar.is-lead .bar-chart__you { --lift: calc(var(--crown-h) - var(--crown-sink) + 1cqw); } /* nằm trên đỉnh vương miện */
 
 /* ---------- Animation: cột chạy lên, vương miện bật ra sau cùng ---------- */
 .bar-chart__bar {
@@ -84,7 +93,7 @@
   animation-delay: calc(4 * var(--stagger-bar) + var(--duration-bar) * .9), calc(4 * var(--stagger-bar) + var(--duration-bar) * .9 + 500ms);
 }
 @keyframes you-in  { from { opacity: 0; transform: translateY(-12px) scale(.6); } }
-@keyframes you-bob { 50% { transform: translateY(5px); } }
+@keyframes you-bob { 50% { transform: translateY(var(--you-bob)); } }
 @keyframes bar-rise  { from { transform: translateY(100%); } to { transform: none; } }
 @keyframes bar-fade  { from { opacity: 0; transform: translateY(8px); } }
 @keyframes crown-pop { from { opacity: 0; scale: .3; } }
@@ -92,3 +101,4 @@
 @media (prefers-reduced-motion: reduce) {
   .bar-chart__bar, .bar-chart__pct, .bar-chart__votes, .bar-chart__crown, .bar-chart__label, .bar-chart__you { animation: none; }
 }
+.bar-chart__bar + .bar-chart__bar { margin-left: calc(-1 * var(--bar-stroke)); }

@@ -6,6 +6,7 @@
 @layer tokens, base, components, screens, utilities;
 
 /* 1. Design tokens – đổi design system chủ yếu ở đây */
+@import url("base/stage.css")       layer(tokens); /* khung thiết kế cố định */
 @import url("tokens/primitives.css") layer(tokens);
 @import url("tokens/semantic.css")   layer(tokens);
 

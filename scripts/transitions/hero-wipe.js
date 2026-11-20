@@ -17,6 +17,7 @@
 //  Chạy trong 1 vòng requestAnimationFrame theo thời gian thực
 //  (không phụ thuộc FPS), chỉ đổi transform / path → mượt trên tablet.
 // =====================================================================
+import { stageSize } from '../core/stage.js';
 import { HERO_WIPE as M } from '../config/motion.js';
 import { ASSETS } from '../config/assets.js';
 
@@ -75,7 +76,7 @@ function build() {
   hero.alt = '';
 
   root.append(svg, hero);
-  document.body.append(root);
+  document.getElementById('stage').append(root); // nằm trong khung thiết kế
 
   el = {
     root, svg, hero,
@@ -174,7 +175,7 @@ export function playHeroWipe({ onCovered, from }) {
 
   const e = build();
   const dir = DIRECTIONS[M.direction] || DIRECTIONS.up;
-  const W = innerWidth, H = innerHeight;
+  const { W, H } = stageSize(); // kích thước khung thiết kế, không phải màn hình thật
   const { L, B } = dir.size(W, H);
   const heroW = Math.min(W, H) * M.heroSize;
   const heroH = heroW * (e.hero.naturalHeight / e.hero.naturalWidth || 0.7);

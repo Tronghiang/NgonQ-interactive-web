@@ -2,6 +2,7 @@
 //  NGONQ Macaball – điểm khởi động. Chỉ "nối dây" giữa các màn hình,
 //  không chứa logic giao diện chi tiết.
 // =====================================================================
+import './core/stage.js'; // phải chạy đầu tiên: phóng khung thiết kế cho vừa màn hình
 import { APP_CONFIG } from './config/app.config.js';
 import { show, current } from './core/router.js';
 import { on } from './core/events.js';

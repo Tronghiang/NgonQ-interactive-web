@@ -27,7 +27,7 @@ export const FlavorCard = (f) => `
   <button class="flavor-card" data-id="${f.id}" style="--c:${f.color};--flavor-label:var(--flavor-${f.id}-label)" aria-pressed="false" aria-label="${esc(f.name)}">
     <span class="flavor-card__check" aria-hidden="true">✓</span>
     <span class="flavor-card__label">
-      <span class="flavor-card__brand">NGONQ Macaball</span>
+      <span class="flavor-card__brand">${esc(f.vibe || 'NGONQ Macaball')}</span>
       <span class="flavor-card__name">${esc(f.label || f.name)}</span>
     </span>
     ${Art(f.art || { bg: f.images.front })}

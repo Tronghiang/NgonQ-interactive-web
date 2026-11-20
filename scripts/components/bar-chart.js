@@ -16,7 +16,7 @@ export function BarChart({ total, flavors, pickedId }) {
         ${lead ? `<img class="bar-chart__crown" src="${ASSETS.crown}" alt="Leading">` : ''}
         ${mine ? '<span class="bar-chart__you" aria-label="Your pick">Your pick<i aria-hidden="true"></i></span>' : ''}
         <span class="bar-chart__pct">${pct}<small>%</small></span>
-        <span class="bar-chart__votes">${f.votes} ${f.votes === 1 ? 'person' : 'people'}</span>
+        <span class="bar-chart__votes">${f.votes} ${f.votes === 1 ? 'pick' : 'picks'}</span>
       </div>`;
   }).join('');
 

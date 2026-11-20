@@ -1,0 +1,28 @@
+/* =====================================================================
+   KHUNG THIẾT KẾ CỐ ĐỊNH – để web trông Y HỆT trên mọi máy.
+   Mọi thứ được dàn trang trên 1 khung kích thước cố định (--stage-w × --stage-h),
+   rồi scripts/core/stage.js phóng to / thu nhỏ cả khung cho vừa màn hình
+   (giống phóng 1 tấm ảnh). Màn khác tỉ lệ sẽ có viền trống cùng màu nền.
+
+   Trong CSS dùng var(--vw) / var(--vh) thay cho vw / vh:
+   1 --vw = 1% bề rộng KHUNG (không phải màn hình thật).
+   ===================================================================== */
+:root {
+  --stage-w: 1512px;
+  --stage-h: 860px; /* = cửa sổ Safari trên Mac lúc duyệt thiết kế */
+  --vw: calc(var(--stage-w) / 100);
+  --vh: calc(var(--stage-h) / 100);
+}
+@media (orientation: portrait) {
+  :root { --stage-w: 860px; --stage-h: 1512px; }
+}
+
+#stage {
+  position: absolute; left: 0; top: 0;
+  width: var(--stage-w); height: var(--stage-h);
+  overflow: hidden;
+  transform-origin: 0 0;
+  transform: translate(var(--stage-x, 0px), var(--stage-y, 0px)) scale(var(--stage-s, 1));
+  /* transform khiến mọi phần tử position: fixed bên trong (màn, hộp cài đặt, chuyển trang)
+     lấy khung này làm gốc thay vì cả màn hình – đúng ý muốn */
+}

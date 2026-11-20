@@ -39,11 +39,16 @@ const ART = {
 };
 
 export const FLAVORS = [
-  // name = tên sản phẩm; label = tên vị hiện trên thẻ chọn
-  { id: 'cheese', name: 'Prinkle Cheese',  label: 'Cheese flavor' },
-  { id: 'butter', name: 'Butta La Toasta', label: 'Garlic butter flavor' },
-  { id: 'wasabi', name: 'Ayo Wassapi',     label: 'Wasabi flavor' },
-  { id: 'bbq',    name: 'BBQ On Fire',     label: 'BBQ flavor' },
+  // name = tên sản phẩm; label = tên vị hiện trên thẻ chọn; vibe = dòng nhỏ phía trên tên vị
+  // cheer + emoji + tagline = câu chữ trên màn kết quả
+  { id: 'cheese', name: 'Prinkle Cheese',  label: 'Cheese flavor',        vibe: 'Sweet & Savory',
+    cheer: 'A cheesy choice!', emoji: '🧀', tagline: 'Sweet, cheesy and made for happy-go-lucky snackers' },
+  { id: 'butter', name: 'Butta La Toasta', label: 'Garlic butter flavor', vibe: 'Rich & Creamy',
+    cheer: 'A toasty choice!', emoji: '🧈', tagline: 'Buttery, crunchy and made for comfort-loving snackers' },
+  { id: 'wasabi', name: 'Ayo Wassapi',     label: 'Wasabi flavor',        vibe: 'Bold & Refreshing',
+    cheer: 'A zingy choice!', emoji: '🌿', tagline: 'Bold, zingy and made for thrill-seeking snackers' },
+  { id: 'bbq',    name: 'BBQ On Fire',     label: 'BBQ flavor',           vibe: 'Hot & Smoky',
+    cheer: 'A fiery choice!', emoji: '🔥', tagline: 'Hot, smoky and made for adventurous snackers' },
 ].map((f) => ({
   ...f,
   color: `var(--flavor-${f.id}-bg)`,
